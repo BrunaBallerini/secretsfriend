@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_10_141005) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_11_214451) do
   create_table "draws", force: :cascade do |t|
     t.string "title"
     t.string "min_value"
@@ -18,6 +18,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_10_141005) do
     t.datetime "date_draws"
     t.datetime "date_present"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "new_draws", force: :cascade do |t|
+    t.string "title", limit: 150
+    t.string "min_value", limit: 100
+    t.string "max_value", limit: 100
+    t.string "date_draw", limit: 100
+    t.string "date_present", limit: 100
+    t.string "description", limit: 200
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

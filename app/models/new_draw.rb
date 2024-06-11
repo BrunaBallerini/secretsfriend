@@ -1,4 +1,4 @@
-class Draw < ApplicationRecord
+class NewDraw < ApplicationRecord
   validates :title, presence: true
   validates :min_value, presence: true
   validates :max_value, presence: true
