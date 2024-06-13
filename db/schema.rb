@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_11_214451) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_215944) do
+  create_table "all_secrets_friends", force: :cascade do |t|
+    t.string "name", limit: 200
+    t.string "email", limit: 150
+    t.boolean "draw_create"
+    t.integer "draw_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["draw_id"], name: "index_all_secrets_friends_on_draw_id"
+  end
+
   create_table "draws", force: :cascade do |t|
     t.string "title"
     t.string "min_value"
@@ -45,4 +55,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_214451) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "all_secrets_friends", "draws"
 end

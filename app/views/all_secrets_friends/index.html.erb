@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>All secrets friends</h1>
+
+<div id="all_secrets_friends">
+  <% @all_secrets_friends.each do |all_secrets_friend| %>
+    <%= render all_secrets_friend %>
+    <p>
+      <%= link_to "Show this all secrets friend", all_secrets_friend %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New all secrets friend", new_all_secrets_friend_path %>

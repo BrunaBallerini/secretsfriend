@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @all_secrets_friend %>
+
+<div>
+  <%= link_to "Edit this all secrets friend", edit_all_secrets_friend_path(@all_secrets_friend) %> |
+  <%= link_to "Back to all secrets friends", all_secrets_friends_path %>
+
+  <%= button_to "Destroy this all secrets friend", @all_secrets_friend, method: :delete %>
+</div>

@@ -1,0 +1,37 @@
+<%= form_with(model: all_secrets_friend) do |form| %>
+  <% if all_secrets_friend.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(all_secrets_friend.errors.count, "error") %> prohibited this all_secrets_friend from being saved:</h2>
+
+      <ul>
+        <% all_secrets_friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :draw_create, style: "display: block" %>
+    <%= form.check_box :draw_create %>
+  </div>
+
+  <div>
+    <%= form.label :draw_id, style: "display: block" %>
+    <%= form.text_field :draw_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

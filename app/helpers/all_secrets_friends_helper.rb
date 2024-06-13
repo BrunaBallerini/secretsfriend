@@ -1,0 +1,2 @@
+module AllSecretsFriendsHelper
+end
