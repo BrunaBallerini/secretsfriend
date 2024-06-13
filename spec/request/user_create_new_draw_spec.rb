@@ -9,7 +9,7 @@ RSpec.describe "Draw", type: :request do
         "title": "Sorteio da firma",
         "min_value": "50,00",
         "max_value": "50,00",
-        "date_draw": "10/12/2024",
+        "date_draws": "10/12/2024",
         "date_present": "25/12/2024",
         "description": "Sorteio da firma"
       }
@@ -21,15 +21,13 @@ RSpec.describe "Draw", type: :request do
       sign_in user
       post "/draws", params: {
         "title": nil,
-        "min_value": "50,00",
-        "max_value": "50,00",
-        "date_draw": "10/12/2024",
+        "min_value": nil,
+        "max_value": nil,
+        "date_draws": nil,
         "date_present": "25/12/2024",
         "description": "Sorteio da firma"
       }
-      puts response.body
-      # expect(response).to have_http_status(:unprocessable_entity)
-      expect(response).to have_http_status(:created)
+      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 end
