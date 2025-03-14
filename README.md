@@ -29,6 +29,14 @@ Antes de começar, você precisa ter instalado:
    docker compose up
    ```
 
+3. Este projeto utiliza um arquivo `.env` para armazenar variáveis de ambiente sensíveis. 
+   Para rodar o projeto corretamente, siga os passos abaixo:
+   **Crie um arquivo `.env` na raiz do projeto e configure suas próprias variáveis de ambiente**  
+   Use o comando:  
+   ```sh
+   cp env.example.txt .env
+
+
 3. Acesse no navegador:
    ```
    http://localhost:5173
