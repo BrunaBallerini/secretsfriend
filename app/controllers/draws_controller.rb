@@ -1,9 +1,20 @@
 # frozen_string_literal: true
 
 class DrawsController < ApplicationController # rubocop:disable Style/Documentation
-  def index
+  def index # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     draws_user = Draw.where(user_id: params[:user_id])
-    render json: draws_user
+    formatted_draws = draws_user.map do |draw|
+      {
+        id: draw.id,
+        title: draw.title.capitalize,
+        min_value: format('%.2f', draw.min_value).gsub('.', ','),
+        max_value: format('%.2f', draw.max_value).gsub('.', ','),
+        date_draws: draw.date_draws.strftime('%d/%m/%Y'),
+        date_present: draw.date_draws.strftime('%d/%m/%Y'),
+        location: draw.location.capitalize
+      }
+    end
+    render json: formatted_draws
   end
 
   def create # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
@@ -28,8 +39,8 @@ class DrawsController < ApplicationController # rubocop:disable Style/Documentat
     Rails.logger.info("draw: #{draw}")
     participants = draw.participants
     render json: {
-      draw: draw,
-      participants: participants
+      draw:,
+      participants:
     }, status: :ok
   end
 
