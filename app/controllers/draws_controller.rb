@@ -62,9 +62,11 @@ class DrawsController < ApplicationController # rubocop:disable Style/Documentat
     draw = Draw.where(id: params[:id]).first
     Rails.logger.info("draw: #{draw}")
 
-    secret_friend = draw.assign_secret_friends
-    Rails.logger.info("secret_friend: #{secret_friend}")
+    unless draw.completed
+      secret_friend = draw.assign_secret_friends
+      draw.update(completed: true)
+    end
 
-    render json: secret_friend, status: :ok
+    render json: { secret_friend:, completed: draw.completed }, status: :ok
   end
 end
