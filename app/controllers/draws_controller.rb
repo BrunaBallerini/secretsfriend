@@ -62,11 +62,11 @@ class DrawsController < ApplicationController # rubocop:disable Style/Documentat
     draw = Draw.where(id: params[:id]).first
     Rails.logger.info("draw: #{draw}")
 
-    unless draw.completed
-      secret_friend = draw.assign_secret_friends
-      draw.update(completed: true)
-    end
+    return render json: { message: 'O sorteio já realizado.', completed: true }, status: :ok if draw.completed
 
-    render json: { secret_friend:, completed: draw.completed }, status: :ok
+    secret_friend = draw.assign_secret_friends
+    draw.update(completed: true)
+
+    render json: { secret_friend:, completed: draw.completed }, status: :created
   end
 end
